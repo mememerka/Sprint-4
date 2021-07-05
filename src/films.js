@@ -23,8 +23,8 @@ let resultat = moviesdirector.reduce(function(acc,moviesdirector) {
 
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(movies){
- let movies2 = movies;
- let sorted = movies2.sort(function(a,b){
+ const movies2 = movies;
+ movies2.sort(function(a,b){
    //tolowercase
     if (a.title < b.title){
       return -1;
@@ -39,7 +39,8 @@ function orderAlphabetically(movies){
 
 // Exercise 5: Order by year, ascending
 function orderByYear(movies) {
-   movies.sort(function(a,b) {
+    const movies2 = movies;
+    movies2.sort(function(a,b) {
     if (a.year > b.year){
       return 1;
     }
@@ -58,7 +59,7 @@ function orderByYear(movies) {
       }
     }
   })
-  return movies;
+  return movies2;
 }
 
 // Exercise 6: Calculate the average of the movies in a category
