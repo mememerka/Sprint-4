@@ -23,7 +23,7 @@ let resultat = moviesdirector.reduce(function(acc,moviesdirector) {
 
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(movies){
- const movies2 = movies;
+ const movies2 = movies.slice();
  movies2.sort(function(a,b){
    //tolowercase
     if (a.title < b.title){
@@ -39,7 +39,7 @@ function orderAlphabetically(movies){
 
 // Exercise 5: Order by year, ascending
 function orderByYear(movies) {
-    const movies2 = movies;
+    const movies2 = movies.slice();
     movies2.sort(function(a,b) {
     if (a.year > b.year){
       return 1;
@@ -74,7 +74,7 @@ function moviesAverageByCategory(movies,genre){
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes(movies) {
-  let movies2 = movies
+  const movies2 = movies.slice();
   let regex = /(\d+)/g;
   let duration;
   let time;
