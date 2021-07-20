@@ -1,7 +1,6 @@
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(movies) {
   let result =  movies.map(({director})=> director);
-  console.log("EXERCICE 1 ->", result);
   return result;
 }
 
@@ -20,12 +19,10 @@ let resultat = moviesdirector.reduce(function(acc,moviesdirector) {
   return parseFloat((resultat/total).toFixed(2));
 }
 
-
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(movies){
  const movies2 = movies.slice();
  movies2.sort(function(a,b){
-   //tolowercase
     if (a.title < b.title){
       return -1;
     }
@@ -64,17 +61,19 @@ function orderByYear(movies) {
 
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory(movies,genre){
-  let genrefiltered = movies.filter(movies=>movies.genre == genre);//.includes
-  let total = genrefiltered.length;
-  let genreAverage = movies.reduce(function(acc,genrefiltered) {
-  return (genrefiltered.score + acc); 
-},0);
+  const movies2 = movies.map(movie => ({ ...movie }));
+  const genrefiltered = movies2.filter(movie => movie.genre == genre);
+  const genrescorefiltered = genrefiltered.filter(movie => movie.score != isNaN(movie.score));
+  let total = genrescorefiltered.length;
+  let genreAverage = genrescorefiltered.reduce(function(acc,obj){
+    return (obj.score + acc);
+  },0);
   return parseFloat((genreAverage/total).toFixed(2));
 }
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes(movies) {
-  const movies2 = movies.slice();
+  const movies2 = movies.map(movie => ({ ...movie }));
   let regex = /(\d+)/g;
   let duration;
   let time;
@@ -85,7 +84,7 @@ function hoursToMinutes(movies) {
     if(!time[1]){
       time[1] = 0;
     }
-    movie.duration = parseInt((parseInt(time[0])*60)+parseInt(time[1]));
+    movie.duration = parseInt((parseInt(time[0])*60)+parseInt(time[1])); 
   }
   return movies2;
 }
